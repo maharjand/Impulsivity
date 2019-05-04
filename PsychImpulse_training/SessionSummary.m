@@ -15,6 +15,7 @@ if iTrial == 2
     axes(GUIHandles.Axes.OutcomePlot.MainHandle)
     GUIHandles.Axes.OutcomePlot.CurrentTrialCircle = line(-1,0.5, 'LineStyle','none','Marker','o','MarkerEdge','k','MarkerFace',[1 1 1], 'MarkerSize',6);
     GUIHandles.Axes.OutcomePlot.CurrentTrialCross = line(-1,0.5, 'LineStyle','none','Marker','+','MarkerEdge','k','MarkerFace',[1 1 1], 'MarkerSize',6);
+    GUIHandles.Axes.OutcomePlot.CurrentWaitDuration = text(1,0.5, 'BpodSystem.Data.Custom.WaitReq(end)'+'ml', 'verticalalignment','bottom','horizontalalignment','center');
     GUIHandles.Axes.OutcomePlot.LeftReward = line(-1,1, 'LineStyle','none','Marker','o','MarkerEdge','g','MarkerFace','g', 'MarkerSize',6);
     GUIHandles.Axes.OutcomePlot.RightReward = line(-1,1, 'LineStyle','none','Marker','o','MarkerEdge','k','MarkerFace','k', 'MarkerSize',6);
     GUIHandles.Axes.OutcomePlot.NoResponse = line(-1,1, 'LineStyle','none','Marker','o','MarkerEdge','b','MarkerFace','none', 'MarkerSize',6);
@@ -46,7 +47,7 @@ end
     
 set(GUIHandles.Axes.OutcomePlot.CurrentTrialCircle, 'xdata', iTrial, 'ydata', 0.5);
 set(GUIHandles.Axes.OutcomePlot.CurrentTrialCross, 'xdata', iTrial, 'ydata', 0.5);
-    
+set(GUIHandels.Axes.OutcomePlot.CurrentWaitDuration, 'position',[iTrail+3 0.5], 'string', [BpodSystem.Data.Custom.WaitReq(end) ' sec']);     
     %Plot past trials
     ChoiceLeft = Data.Custom.ChoiceLeft;
     ChoiceRight = Data.Custom.ChoiceRight;
@@ -67,7 +68,7 @@ set(GUIHandles.Axes.OutcomePlot.CurrentTrialCross, 'xdata', iTrial, 'ydata', 0.5
         
         ndxUrwd = impulsiveAction(indxToPlot) == 1;
         Xdata = indxToPlot(ndxUrwd);
-        Ydata = ChoiceLeft(indxToPlot); Ydata = Ydata(ndxUrwd);
+        Ydata = ones(size(Xdata))*.5;
         set(GUIHandles.Axes.OutcomePlot.impulsiveAction, 'xdata', Xdata, 'ydata', Ydata);
         
         ndxNocho = NoChoice(indxToPlot)== 1 ;
