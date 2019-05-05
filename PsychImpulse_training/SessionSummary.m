@@ -37,6 +37,9 @@ if iTrial == 2
     %% Choice Proportions 
     hold(GUIHandles.Axes.ChoiceProp.MainHandle,'on')
     GUIHandles.Axes.ChoiceProp.ChoiceProp = line(GUIHandles.Axes.ChoiceProp.MainHandle,[0 1],[0 1], 'LineStyle','none','Marker','o','MarkerEdge','k','MarkerFace','k', 'MarkerSize',6);
+    GUIHandles.Axes.ChoiceProp.Boundary = line(GUIHandles.Axes.ChoiceProp.MainHandle,[0 1],[0 1], 'LineStyle','--','Color','k','Visible','on','linewidth',3);
+    GUIHandles.Axes.ChoiceProp.Boundary.XData = 1:10;
+    GUIHandles.Axes.ChoiceProp.Boundary.YData = ones(1,10)*0.75;
     GUIHandles.Axes.ChoiceProp.MainHandle.XLabel.String = 'Trial Time (sec)';
     GUIHandles.Axes.ChoiceProp.MainHandle.YLabel.String = 'Prop Correct';
     GUIHandles.Axes.ChoiceProp.MainHandle.Title.String = 'Correct Choice Proportion';
